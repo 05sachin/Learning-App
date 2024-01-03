@@ -1,6 +1,6 @@
 import React from "react";
-import * as style from "./Details.module.css";
-import coursesData from "../../../data/courses.json";
+import style from "./Details.module.css";
+import coursesData from "../../data/courses.json";
 //Third task: import useParams hook
 import { Link, useParams } from "react-router-dom";
 

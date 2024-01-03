@@ -1,43 +1,53 @@
-import Hero from "./pages/app/hero/Hero";
+
+import Hero from "./components/hero/Hero";
 import Nav from "./components/nav/Nav";
-import Courses from "./pages/app/courses/Courses";
+import Courses from "./components/courses/Courses";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-importt Details from "./pages/app/details/Details";
-import Learn from "./pages/app/learn/Learn";
-import Chapter from "./pages/app/chapter/Chapter";
-import Page404 from "./pages/misc/Page404/Page404";
+import Details from "./components/details/Details";
+import Learn from "./components/learn/Learn";
+import Chapter from "./components/chapter/Chapter";
+import Page404 from "./components/Page404/Page404";
+import React from "react";
+import ReactDOM from "react-dom/client"
+
+const browserRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Nav />,
+    errorElement: <Page404 />,
+    children: [
+      { 
+        path: "/", 
+        element: <Hero />
+      },
+      {
+        path: "/courses",
+        children: [
+          { 
+            index: true, 
+            element: <Courses /> 
+          },
+          { 
+            path: ":courseId", 
+            element: <Details /> 
+          },
+        ],
+      },
+      {
+        path: "/learn/:courseId",
+        element: <Learn />,
+        children: [
+          { 
+            path: "chapter/:chapterId", 
+            element: <Chapter /> 
+          }
+        ],
+      },
+    ],
+  },
+]);
 
 
-function App() {
-  const browserRouter = createBrowserRouter([
-    {
-      path: "/",
-      element: <Nav />,
-      errorElement: <Page404 />,
-      children: [
-        { path: "", element: <Hero /> },
-        {
-          path: "/courses",
-          children: [
-            { index: true, element: <Courses /> },
-            { path: ":courseId", element: <Details /> },
-          ],
-        },
-        {
-          path: "/learn/:courseId",
-          element: <Learn />,
-          children: [{ path: "chapter/:chapterId", element: <Chapter /> }],
-        },
-      ],
-    },
-  ]);
-
-  return (
-    <>
-      <RouterProvider router={browserRouter} />
-    </>
-  );
-}
-
-export default App;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render( <RouterProvider router={browserRouter} />);

@@ -1,7 +1,7 @@
 import React from "react";
-import * as style from "./Courses.module.css";
-import Card from "../../../components/card";
-import coursesData from "../../../data/courses.json";
+import style from "./Courses.module.css";
+import Card from "../card/Card";
+import coursesData from "../../data/courses.json";
 import { Link } from "react-router-dom";
 
 function Courses() {

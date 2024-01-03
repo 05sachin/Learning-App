@@ -1,7 +1,7 @@
 import React from "react";
-import * as style from "./Learn.module.css";
-import coursesData from "../../../data/courses.json";
-// Task4: Import all the required elements from the react-router-dom
+import style from "./Learn.module.css";
+import coursesData from "../../data/courses.json";
+
 import { Link, useParams, Outlet } from "react-router-dom";
 
 function Learn() {

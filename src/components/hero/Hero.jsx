@@ -1,5 +1,5 @@
 import React from 'react';
-import * as style from './Hero.module.css';
+import style from './Hero.module.css';
 
 function Hero() {
   return (

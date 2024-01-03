@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./Chapter.module.css";
+import styles from "./Chapter.module.css";
 import { useOutletContext, useParams } from "react-router-dom";
 
 function Chapter() {
